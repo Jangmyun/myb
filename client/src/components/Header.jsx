@@ -2,10 +2,13 @@ import classnames from "classnames";
 
 const headerIcon = classnames(
   "flex",
-  "w-7",
-  "h-7",
+  "w-10",
+  "h-10",
   "justify-center",
-  "items-center"
+  "items-center",
+  "rounded-full",
+  "hover:bg-hover-bg",
+  "cursor-pointer"
 );
 
 function Header() {
@@ -14,10 +17,10 @@ function Header() {
       <div className="header_left">
         <h1 className="text-xl">S5cene</h1>
       </div>
-      <div className="header_right flex">
+      <div className="header_right flex justify-between">
         <div className={headerIcon}>
           <svg
-            className="w-4"
+            className="w-5"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
             fill="#ececec"
@@ -27,7 +30,7 @@ function Header() {
         </div>
         <div className={headerIcon}>
           <svg
-            className="w-4"
+            className="w-5"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
             fill="#ececec"
