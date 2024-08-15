@@ -1,6 +1,10 @@
 import blankProfile from "../assets/imgs/blank-profile.png";
 import classnames from "classnames";
 
+// zustand store
+import { useHeaderUserStore } from "../stores/modalStore";
+import HeaderUserNav from "./HeaderUserNav";
+
 const headerIcon = classnames(
   "flex",
   "w-10",
@@ -15,12 +19,14 @@ const headerIcon = classnames(
 const centerChild = classnames("flex", "justify-center", "items-center");
 
 function Header() {
+  const { isClicked, click, unClick } = useHeaderUserStore();
+
   return (
     <header className="flex p-3 items-center justify-between">
       <div className="header_left">
         <h1 className="text-xl">S5cene</h1>
       </div>
-      <div className="header_right flex justify-between">
+      <div className="header_right flex justify-between relative">
         <div className={headerIcon}>
           <svg
             className="w-5"
@@ -41,8 +47,13 @@ function Header() {
             <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
           </svg>
         </div>
-        <div className="flex items-center justify-between cursor-pointer ">
-          <div className="imgContainer w-10 h-10 rounded-full overflow-hidden mr-2">
+        <div
+          className="flex items-center justify-between cursor-pointer group"
+          onClick={() => {
+            isClicked ? unClick() : click();
+          }}
+        >
+          <div className="imgContainer w-9 h-9 rounded-full overflow-hidden mr-2">
             <img
               className="w-full h-full object-cover"
               src={blankProfile}
@@ -53,12 +64,14 @@ function Header() {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 320 512"
-              fill="#ececec"
+              fill="currentColor"
+              className="group-hover:fill-white w-2/4"
             >
               <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
             </svg>
           </div>
         </div>
+        {isClicked ? <HeaderUserNav></HeaderUserNav> : null}
       </div>
     </header>
   );
