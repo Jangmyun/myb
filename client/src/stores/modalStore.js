@@ -6,4 +6,10 @@ const useModalStore = create((set) => ({
   unClicked: () => set({ isClicked: false }),
 }));
 
-export default useModalStore;
+const useHeaderUserStore = create((set) => ({
+  isClicked: false,
+  click: () => set({ isClicked: true }),
+  unClick: () => set({ isClicked: false }),
+}));
+
+export { useHeaderUserStore, useModalStore };
