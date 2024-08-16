@@ -12,6 +12,9 @@ function HeaderUserNav() {
   return (
     <div className="HeaderUserNavWrapper flex flex-col absolute top-full right-0 bg-bg-element">
       <a className={headerNavContent} href="">
+        새 글 쓰기
+      </a>
+      <a className={headerNavContent} href="">
         내 글
       </a>
       <a className={headerNavContent} href="">
