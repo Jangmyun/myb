@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import classNames from "classnames";
 
 const headerNavContent = classNames(
@@ -11,18 +12,12 @@ const headerNavContent = classNames(
 function HeaderUserNav() {
   return (
     <div className="HeaderUserNavWrapper flex flex-col absolute top-full right-0 bg-bg-element">
-      <a className={headerNavContent} href="">
+      <Link to={"/write"} className={headerNavContent}>
         새 글 쓰기
-      </a>
-      <a className={headerNavContent} href="">
-        내 글
-      </a>
-      <a className={headerNavContent} href="">
-        설정
-      </a>
-      <a className={headerNavContent} href="">
-        로그아웃
-      </a>
+      </Link>
+      <Link className={headerNavContent}>내 글</Link>
+      <Link className={headerNavContent}>설정</Link>
+      <Link className={headerNavContent}>로그아웃</Link>
     </div>
   );
 }
